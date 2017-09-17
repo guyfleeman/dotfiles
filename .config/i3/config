@@ -9,7 +9,36 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# mod
 set $mod Mod4
+
+# notifications 
+exec killall -q notify-osd
+exec --no-startup-id dunst
+
+# wallpaper
+exec /usr/bin/feh --bg-scale ~/.config/i3/trek.jpg
+
+# nm
+exec --no-startup-id nm-applet
+
+# audio fix
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume `pactl list short sinks | grep RUNNING | cut -f1` -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute `pactl list short sinks | grep RUNNING | cut -f1` toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# bracket control
+bindsym $mod+bracketright workspace next
+bindsym $mod+bracketleft workspace prev
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

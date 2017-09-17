@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/guyfleeman/.oh-my-zsh
+export ZSH=/home/guyfleeman/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -11,6 +11,9 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # git alias for dotfile mgmt
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# clipboard
+alias c='xclip -selection c'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
