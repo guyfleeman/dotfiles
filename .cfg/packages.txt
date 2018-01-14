@@ -1,0 +1,15 @@
+zsh
+git
+vim
+i3
+feh
+xclip
+xserver-xorg-input-libinput
+wmctrl
+gawk
+traceroute
+pasystray
+scdaemon
+imagemagick
+bash
+util-linux

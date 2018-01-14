@@ -4,9 +4,12 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/guyfleeman/.oh-my-zsh
 
+export TERMINAL=gnome-terminal
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+if [[ ! "$(tty)" == "/dev/tty"* ]]; then
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
@@ -15,6 +18,10 @@ POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
+fi
+
+export TERM="vt100"
+source .ircrc
 
 # git alias for dotfile mgmt
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -27,7 +34,7 @@ alias c='xclip -selection c'
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"

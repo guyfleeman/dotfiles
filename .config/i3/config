@@ -13,6 +13,7 @@
 set $mod Mod4
 
 # default workspaces
+exec --no-startup-id i3-msg 'workspace 10; exec terminator --execute BitchX'
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome --pinned-tab-count=5 https://mail.google.com https://mail.gatech.edu https://robojackets.slack.com https://trello.com https://keep.google.com'
 
 # notifications 
@@ -22,8 +23,9 @@ exec --no-startup-id dunst
 # wallpaper
 exec /usr/bin/feh --bg-scale ~/.config/i3/trek.jpg
 
-# nm
+# i3 bar icons
 exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
 
 # audio fix
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -62,7 +64,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill

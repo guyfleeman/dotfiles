@@ -115,3 +115,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export QSYS_ROOTDIR="/home/guyfleeman/intelFPGA_lite/17.0/quartus/sopc_builder/bin"
