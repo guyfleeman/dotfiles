@@ -5,6 +5,8 @@
 USERNAME=`whoami`
 export ZSH=/home/$USERNAME/.oh-my-zsh
 
+source $HOME/.zsh_aliases
+
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git vi-mode)
 
@@ -24,13 +26,6 @@ if [ "$TERM" = "xterm-256color" ]; then
 else
         ZSH_THEME="af-magic"
 fi
-
-# git alias for dotfile mgmt
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# clipboard
-alias c='xclip -selection c'
-alias p='xclip -out -selection c'
 
 export IRCNICK=guyfleeman
 export USER=guyfleeman
