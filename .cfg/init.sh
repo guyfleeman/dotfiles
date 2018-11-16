@@ -38,4 +38,13 @@ else
 	rm -rf fonts
 fi
 
+cd external/solarc
+./autogen.sh --prefix /usr --disable-light --disable-xfwm --disable-cinnamon
+make install
+cd ../..
+
+cd external/arcicon
+./autogen.sh --prefix /usr
+make install
+cd ../..
 

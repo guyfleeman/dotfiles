@@ -13,3 +13,9 @@ scdaemon
 imagemagick
 bash
 util-linux
+build-essential
+gnome-themes-standard
+gnome-shell-extensions
+gtk2-engines-murrine
+libgtk-3-dev
+pkg-config

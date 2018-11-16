@@ -1,0 +1,6 @@
+[submodule ".cfg/external/solarc"]
+	path = .cfg/external/solarc
+	url = https://github.com/schemar/solarc-theme.git
+[submodule ".cfg/external/arcicon"]
+	path = .cfg/external/arcicon
+	url = https://github.com/horst3180/arc-icon-theme.git
