@@ -4,3 +4,6 @@
 [submodule ".cfg/external/arcicon"]
 	path = .cfg/external/arcicon
 	url = https://github.com/horst3180/arc-icon-theme.git
+[submodule ".cfg/external/i3gaps"]
+	path = .cfg/external/i3gaps
+	url = https://github.com/Airblader/i3.git
