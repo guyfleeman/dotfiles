@@ -38,8 +38,6 @@ else
 	rm -rf fonts
 fi
 
-config submodule update --init --recursive
-
 cd external/solarc
 ./autogen.sh --prefix /usr --disable-light --disable-xfwm --disable-cinnamon
 make install
@@ -51,6 +49,7 @@ make install
 cd ../..
 
 cd external/xcbutil
+git submodule update --init
 ./autogen.sh --prefix=/usr
 make
 make install
