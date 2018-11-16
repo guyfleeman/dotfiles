@@ -38,6 +38,8 @@ else
 	rm -rf fonts
 fi
 
+config submodule update --init --recursive
+
 cd external/solarc
 ./autogen.sh --prefix /usr --disable-light --disable-xfwm --disable-cinnamon
 make install
@@ -47,4 +49,19 @@ cd external/arcicon
 ./autogen.sh --prefix /usr
 make install
 cd ../..
+
+cd external/xcbutil
+./autogen.sh --prefix=/usr
+make
+make install
+cd ../..
+
+cd external/i3gaps
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+# make install
+cd ../../..
 

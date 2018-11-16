@@ -7,3 +7,6 @@
 [submodule ".cfg/external/i3gaps"]
 	path = .cfg/external/i3gaps
 	url = https://github.com/Airblader/i3.git
+[submodule ".cfg/external/xcbutil"]
+	path = .cfg/external/xcbutil
+	url = https://github.com/Airblader/xcb-util-xrm.git
