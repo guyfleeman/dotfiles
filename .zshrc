@@ -2,32 +2,40 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/guyfleeman/.oh-my-zsh
+USERNAME=`whoami`
+export ZSH=/home/$USERNAME/.oh-my-zsh
 
-export TERMINAL=gnome-terminal
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+plugins=(git vi-mode)
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-if [[ ! "$(tty)" == "/dev/tty"* ]]; then
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
+# disable nice visuals in kernel TTYs
+if [ "$TERM" = "xterm-256color" ]; then
+	ZSH_THEME="powerlevel9k/powerlevel9k"
+	POWERLEVEL9K_MODE='nerdfont-complete'
+	POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+	POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+	POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
+	POWERLEVEL9K_DIR_SHOW_WRITABLE=true
+	POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+	POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time vi_mode background_jobs)
+	
+	POWERLEVEL9K_VI_NORMAL_MODE_STRING="N"
+	POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
+else
+        ZSH_THEME="af-magic"
 fi
-
-export TERM="vt100"
-source .ircrc
 
 # git alias for dotfile mgmt
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # clipboard
 alias c='xclip -selection c'
+alias p='xclip -out -selection c'
+
+export IRCNICK=guyfleeman
+export USER=guyfleeman
+export IRCNAME=guyfleeman
+export IRCSERVER=irc.oftc.net
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,15 +57,15 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -66,12 +74,6 @@ HYPHEN_INSENSITIVE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
