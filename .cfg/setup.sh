@@ -61,6 +61,9 @@ rm -rf build/
 mkdir -p build && cd build/
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
-# make install
 cd ../../..
+
+cp kern_key_map.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable key_kern_map
 

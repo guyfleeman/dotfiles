@@ -21,23 +21,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Keycodes
-# Esc 9
-# Caps
-# LCtrl 66
-# Win 133
-# LAtl 64
-# RShift 62
-# Esc    -> Caps
-# Caps   -> Esc
-/usr/bin/setxkbmap -option "caps:swapescape"
-# LCtrl  -> LAlt
-# LAlt   -> Win
-# RShift -> LCtrl
-
-#/usr/bin/setxkbmap -layout us -option "ctrl:nocaps"
-
-
 #echo "doing cdm things"
 # To avoid potential situation where cdm(1) crashes on every TTY, here we
 # default to execute cdm(1) on tty1 only, and leave other TTYs untouched.

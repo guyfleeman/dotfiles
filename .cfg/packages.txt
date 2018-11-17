@@ -1,7 +1,10 @@
 zsh
 git
 vim
-i3
+i3status
+i3lock
+dunst
+dmenu
 feh
 xclip
 xserver-xorg-input-libinput

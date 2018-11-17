@@ -23,6 +23,9 @@ exec --no-startup-id dunst
 # wallpaper
 exec /usr/bin/feh --bg-scale ~/.config/i3/trek.jpg
 
+# stop sleep bugs
+exec --no-startup-id xset s off
+
 # i3 bar icons
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
@@ -96,7 +99,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+y split h
 
 # split in vertical orientation
 bindsym $mod+v split v
