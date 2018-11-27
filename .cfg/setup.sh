@@ -65,5 +65,5 @@ cd ../../..
 
 cp kern_key_map.service /etc/systemd/system/
 systemctl daemon-reload
-systemctl enable key_kern_map
+systemctl enable kern_key_map
 

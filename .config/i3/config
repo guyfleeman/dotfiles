@@ -71,13 +71,14 @@ default_border none
 default_floating_border normal
 
 focus_wrapping no
-focus_follows_mouse no
+focus_follows_mouse yes
 
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+x kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -91,12 +92,14 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+semicolon focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+bindsym $mod+Shift+semicolon move right
 
 # split in horizontal orientation
 bindsym $mod+y split h
@@ -150,8 +153,10 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
