@@ -74,6 +74,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# don't verify history expansion before execution
+unsetopt histverify
+
+# don't share history
+unsetopt sharehistory
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

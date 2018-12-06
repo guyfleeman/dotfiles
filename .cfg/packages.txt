@@ -1,6 +1,7 @@
 zsh
 git
 vim
+compton
 i3status
 i3lock
 dunst

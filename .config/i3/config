@@ -10,7 +10,11 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # mod
-set $mod Mod4
+set $mod Mod1
+
+# start compositing, the daemonize flag doesn't work on VMs
+#exec compton -CGb
+exec compton -CG &
 
 # default workspaces
 exec --no-startup-id i3-msg 'workspace 10; exec terminator --execute BitchX'
