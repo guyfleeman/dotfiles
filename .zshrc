@@ -23,6 +23,8 @@ if [ "$TERM" = "xterm-256color" ]; then
 	
 	POWERLEVEL9K_VI_NORMAL_MODE_STRING="N"
 	POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
+
+	ZLE_RPROMPT_INDENT=-1
 else
         ZSH_THEME="af-magic"
 fi
