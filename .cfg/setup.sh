@@ -59,6 +59,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config submodule init
 config submodule update --recursive
 
+
+
 cd external/solarc
 ./autogen.sh --prefix /usr --disable-light --disable-xfwm --disable-cinnamon
 make install
