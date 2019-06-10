@@ -1,6 +1,7 @@
 zsh
 git
 vim
+wget
 compton
 i3status
 i3lock
@@ -21,7 +22,10 @@ gnome-themes-standard
 gnome-shell-extensions
 gtk2-engines-murrine
 libgtk-3-dev
+sassc
 pkg-config
+optipng
+inkscape
 libtool
 libxcb1-dev
 libxcb-keysyms1-dev

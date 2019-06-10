@@ -36,11 +36,11 @@ if [ -d "/home/$INIT_USER/.oh-my-zsh" ]; then
 	fi
 else
 	echo "No Oh-My-Zsh folder was found. Will run RR inst."
-	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+	wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | bash -s - --unattended
 	git clone https://github.com/bhilburn/powerlevel9k.git /home/$INIT_USER/.oh-my-zsh/custom/themes/powerlevel9k
 	chown -R $INIT_USER:$INIT_USER /home/$INIT_USER/.oh-my-zsh
 	chown $INIT_USER:$INIT_USER /home/$INIT_USER/.zshrc
-	chown $INIT_USER:$INIT_USER /home/$INIT_USER/.zsh-history
+	chown $INIT_USER:$INIT_USER /home/$INIT_USER/.zsh_history
 
 	# restore zshrc
 	if [ -f $HOME/.zshrc.pre-oh-my-zsh ]; then
@@ -53,6 +53,13 @@ else
 	./install.sh
 	cd ..
 	rm -rf fonts
+
+	echo "Will perform one time install of nerd font glyphs."
+	git clone https://github.com/ryanoasis/nerd-fonts.git --depth=1
+	cd nerd-fonts
+	./install.sh
+	cd ..
+	rm -rf nerd-fonts
 fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -61,29 +68,39 @@ config submodule update --recursive
 
 
 
-cd external/solarc
-./autogen.sh --prefix /usr --disable-light --disable-xfwm --disable-cinnamon
-make install
-cd ../..
+cd external/solarc/solarc-theme
 
-cd external/arcicon
+sudo rm -rf /usr/share/themes/{SolArc,SolArc-Darker,SolArc-Dark}
+rm -rf ~/.local/share/themes/{SolArc,SolArc-Darker,SolArc-Dark}
+rm -rf ~/.themes/{SolArc,SolArc-Darker,SolArc-Dark}
+
+./solarize.sh
+
+cd arc-theme-*
+./autogen.sh --prefix=/usr --disable-light --disable-darker
+cd ..
+
+cd ../../..
+
+cd external/arcicon/arc-icon-theme
 ./autogen.sh --prefix /usr
 make install
-cd ../..
+cd ../../..
 
-cd external/xcbutil
+cd external/xcbutil/xcb-util-xrm
 git submodule update --init
 ./autogen.sh --prefix=/usr
 make
 make install
-cd ../..
+cd ../../..
 
-cd external/i3gaps
+cd external/i3gaps/i3
 autoreconf --force --install
 rm -rf build/
 mkdir -p build && cd build/
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
+make install
+cd ..
 cd ../../..
 
 cp kern_key_map.service /etc/systemd/system/
