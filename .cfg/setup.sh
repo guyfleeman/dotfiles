@@ -21,7 +21,7 @@ fi
 
 if [ `grep -c "$INIT_USER" /etc/passwd` -eq 0 ]; then
 	echo "Unable to change shell. $INIT_USER not found in local user registery."
-	echo "Is the machine on directory services?"
+	echo "Is the machine on directory services? Set atl init cmd in gnome-terminal or talk to the sysadmin."
 else
 	# set Zsh default sh
 	chsh -s $(which zsh) $INIT_USER
@@ -107,3 +107,30 @@ cp kern_key_map.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable kern_key_map
 
+# this should probably be more robust, and generate
+# a device specific hwdb file and disable the remap
+# service if necessary
+if [ -d "/lib/udev/hwdb.d" ]; then
+	OUTPUT_FILE="./92-keyboard-rebind.hwdb"
+	./gen_usbkb_rebind.sh $OUTPUT_FILE rebind.conf
+
+
+	cp $OUTPUT_FILE /lib/udev/hwdb.d
+	echo "Installed gen keyboard rebinding"
+	
+	echo "Updating hwdb..."
+	udevadm hwdb --update
+	systemd-hwdb update
+
+	echo "Triggering udevadm db reload..."
+	udevadm trigger --sysname-match="event*"
+
+	rm $OUTPUT_FILE
+else
+	echo "No udev hwdb."
+fi
+
+echo "Applying user level configs..."
+su $INIT_USER -c ./apply.sh
+
+echo "Setup complete."

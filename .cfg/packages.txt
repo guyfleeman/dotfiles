@@ -21,6 +21,7 @@ build-essential
 gnome-themes-standard
 gnome-shell-extensions
 gtk2-engines-murrine
+libcanberra-gtk-module
 libgtk-3-dev
 sassc
 pkg-config
