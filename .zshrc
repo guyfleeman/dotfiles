@@ -82,6 +82,9 @@ unsetopt histverify
 # don't share history
 unsetopt sharehistory
 
+if [ -d "$HOME/.cargo/bin" ]; then
+	export PATH=$HOME/.cargo/bin:$PATH
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
