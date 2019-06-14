@@ -40,7 +40,9 @@ else
 	git clone https://github.com/bhilburn/powerlevel9k.git /home/$INIT_USER/.oh-my-zsh/custom/themes/powerlevel9k
 	chown -R $INIT_USER:$INIT_USER /home/$INIT_USER/.oh-my-zsh
 	chown $INIT_USER:$INIT_USER /home/$INIT_USER/.zshrc
-	chown $INIT_USER:$INIT_USER /home/$INIT_USER/.zsh_history
+	if [ -f /home/$INIT_USER/.zsh_history ]; then
+		chown $INIT_USER:$INIT_USER /home/$INIT_USER/.zsh_history
+	fi
 
 	# restore zshrc
 	if [ -f $HOME/.zshrc.pre-oh-my-zsh ]; then
@@ -51,6 +53,7 @@ else
 	git clone https://github.com/powerline/fonts.git --depth=1
 	cd fonts
 	./install.sh
+	su $INIT_USER -c ./install.sh
 	cd ..
 	rm -rf fonts
 
@@ -58,11 +61,13 @@ else
 	git clone https://github.com/ryanoasis/nerd-fonts.git --depth=1
 	cd nerd-fonts
 	./install.sh
+	su $INIT_USER -c ./install.sh
 	cd ..
 	rm -rf nerd-fonts
 fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
 config submodule init
 config submodule update --recursive
 

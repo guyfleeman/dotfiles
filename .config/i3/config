@@ -17,8 +17,8 @@ set $mod Mod1
 exec compton -CG &
 
 # default workspaces
-exec --no-startup-id i3-msg 'workspace 10; exec terminator --execute BitchX'
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome --pinned-tab-count=5 https://mail.google.com https://mail.gatech.edu https://robojackets.slack.com https://trello.com https://keep.google.com'
+exec --no-startup-id i3-msg 'workspace 10; exec spotify'
+exec --no-startup-id i3-msg 'workspace 1; exec qutebrowser'
 
 # notifications 
 exec killall -q notify-osd
