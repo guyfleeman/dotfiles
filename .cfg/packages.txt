@@ -3,6 +3,7 @@ git
 vim
 qutebrowser
 wget
+apt-listchanges
 compton
 i3status
 i3lock
